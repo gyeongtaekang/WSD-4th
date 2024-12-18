@@ -145,12 +145,3 @@ function SignIn() {
 }
 
 export default SignIn;
-
-<style jsx>{`
-  .card {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    overflow: hidden;
-  }
-`}</style>
