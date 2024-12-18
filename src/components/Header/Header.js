@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 
-function Header() {
+function Header({ kakaoNickname }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollUp, setIsScrollUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);

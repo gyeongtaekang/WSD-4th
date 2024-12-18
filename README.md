@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # WSD-4th
-=======
 # GYENG NETFLIX 클론
 
 이 프로젝트는 React와 Tailwind CSS를 사용하여 GYENG NETFLIX를 클론한 프로젝트입니다.  
@@ -144,4 +142,3 @@ git add . ; git commit -m "수정사항" ; git push origin main
 ├── 📄 postcss.config.js
 ├── 📄 README.md
 └── 📄 tailwind.config.js
->>>>>>> b5ca986 (Add changes to Header.js and other files)
