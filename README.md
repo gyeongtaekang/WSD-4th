@@ -32,7 +32,7 @@
 이 프로젝트는 다운로드 후 아래 단계를 수행하면 바로 실행할 수 있습니다:
 깃허브 기준으로 설명드립니다.
 
-1. 프로젝트 디렉터리로 이동: `cd WSD-4th`  
+1. 프로젝트 디렉터리로 이동: `cd WSD-4th-main`  
 2. 필수 패키지 설치: `npm install`  
 3. 앱 실행: `npm start`  
    브라우저에서 `http://localhost:3000`을 열어 확인하세요.
@@ -65,7 +65,7 @@ yaml
 
 ## 사용 가능한 스크립트
 
-1. 프로젝트 디렉터리로 이동: `cd react-web-main`  
+1. 프로젝트 디렉터리로 이동: `cd WSD-4th-main`  
 2. 종속성 설치: `npm install`  
 3. 앱 실행: `npm start`  
 4. 테스트 실행: `npm test`  
