@@ -38,14 +38,10 @@ function SignIn() {
   
 
   const handleKakaoLogin = () => {
-    if (!acceptTerms) {
-      toast.error('카카오 로그인을 위해 이용 약관에 동의해주세요.');
-      return;
-    }
-
     window.Kakao.Auth.login({
       success: function(authObj) {
-        console.log('카카오 인증 성공:', authObj);
+        console.log(authObj);
+        // Kakao API를 사용하여 사용자 정보를 가져옵니다.
         window.Kakao.API.request({
           url: '/v2/user/me',
           success: async function(response) {
@@ -62,23 +58,22 @@ function SignIn() {
               });
               toast.success('카카오 로그인 성공!');
               console.log('Navigating to home...');
-              navigate('/');
-                            // navigate 호출 지연
+              // navigate 호출 지연
               setTimeout(() => {
                 navigate('/');
               }, 100);
-            }
-
-             catch (error) {
+            } catch (error) {
               toast.error('카카오 로그인에 실패했습니다.');
             }
           },
           fail: function(error) {
-            toast.error('카카오 사용자 정보 요청 실패');
+            console.error('Kakao API request failed:', error);
+            toast.error('카카오 로그인에 실패했습니다.');
           }
         });
       },
       fail: function(err) {
+        console.error('Kakao Auth login failed:', err);
         toast.error('카카오 로그인에 실패했습니다.');
       }
     });
