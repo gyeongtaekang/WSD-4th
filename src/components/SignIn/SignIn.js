@@ -61,11 +61,15 @@ function SignIn() {
               const kakaoEmail = response.kakao_account?.email || 'no-email@example.com';
               const kakaoNickname = response.properties?.nickname || '카카오사용자';
               const kakaoId = response.id;
+              const kakaoProfileImage = response.properties?.profile_image || ''; // 프로필 이미지 추출
+
+              console.log('프로필 이미지:', kakaoProfileImage); // 프로필 이미지 콘솔 출력
 
               await handleLogin({
                 kakaoId: kakaoId,
                 email: kakaoEmail,
-                nickname: kakaoNickname
+                nickname: kakaoNickname,
+                profileImage: kakaoProfileImage // 프로필 이미지 추가
               });
               toast.success('카카오 로그인 성공!');
               console.log('Navigating to home...');
@@ -75,11 +79,12 @@ function SignIn() {
               }, 100);
             } catch (error) {
               toast.error('카카오 로그인에 실패했습니다.');
+              console.error('로그인 에러:', error);
             }
           },
           fail: function(error) {
-            console.error('Kakao API request failed:', error);
-            toast.error('카카오 로그인에 실패했습니다.');
+            toast.error('카카오 사용자 정보 요청에 실패했습니다.');
+            console.error('사용자 정보 요청 에러:', error);
           }
         });
       },
