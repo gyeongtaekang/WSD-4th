@@ -30,11 +30,12 @@ function SignIn() {
     script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
     script.onload = () => {
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init('82317d0757cb04b4675e403fe8fecb0f'); // 카카오 앱 키
+        window.Kakao.init(process.env.REACT_APP_KAKAO_KEY || '82317d0757cb04b4675e403fe8fecb0f'); // 환경 변수 사용
       }
     };
     document.body.appendChild(script);
   }, []);
+  
 
   const handleKakaoLogin = () => {
     if (!acceptTerms) {
@@ -60,6 +61,7 @@ function SignIn() {
                 nickname: kakaoNickname
               });
               toast.success('카카오 로그인 성공!');
+              console.log('Navigating to home...');
               navigate('/');
             } catch (error) {
               toast.error('카카오 로그인에 실패했습니다.');
