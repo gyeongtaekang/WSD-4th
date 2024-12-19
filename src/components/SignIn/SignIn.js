@@ -63,7 +63,13 @@ function SignIn() {
               toast.success('카카오 로그인 성공!');
               console.log('Navigating to home...');
               navigate('/');
-            } catch (error) {
+                            // navigate 호출 지연
+              setTimeout(() => {
+                navigate('/');
+              }, 100);
+            }
+
+             catch (error) {
               toast.error('카카오 로그인에 실패했습니다.');
             }
           },
