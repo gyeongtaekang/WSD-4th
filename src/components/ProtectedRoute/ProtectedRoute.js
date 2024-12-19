@@ -3,8 +3,9 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
-  const isAuthenticated = localStorage.getItem('TMDb-Key') !== null;
-// 여기 키 넣으면 로그인이 안됨..
+  // 환경 변수에서 API 키를 가져와 인증 상태 확인
+  const isAuthenticated = !!process.env.REACT_APP_TMDB_API_KEY;
+
   if (!isAuthenticated) {
     return <Navigate to="/signin" replace />;
   }
