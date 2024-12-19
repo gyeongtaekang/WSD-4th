@@ -29,11 +29,22 @@ function SignIn() {
     const script = document.createElement('script');
     script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
     script.onload = () => {
-      if (!window.Kakao.isInitialized()) {
-        window.Kakao.init(process.env.REACT_APP_KAKAO_KEY || '82317d0757cb04b4675e403fe8fecb0f'); // 환경 변수 사용
+      if (window.Kakao && !window.Kakao.isInitialized()) {
+        const kakaoKey = process.env.REACT_APP_KAKAO_KEY;
+        if (kakaoKey) {
+          window.Kakao.init(kakaoKey); // 환경 변수만 사용
+          console.log('Kakao SDK initialized with environment variable.');
+        } else {
+          console.error('REACT_APP_KAKAO_KEY is not defined in .env file.');
+        }
       }
     };
     document.body.appendChild(script);
+
+    // Cleanup script when component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
   
 
